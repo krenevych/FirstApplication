@@ -2,9 +2,8 @@ package com.example.fistapplication
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -17,23 +16,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnPressMe: Button = findViewById(R.id.btnPressMe)
-        val textView = findViewById<TextView>(R.id.textView)
 
-        btnPressMe.setOnClickListener { it: View? ->
-            textView.text = "Hello, Andrii"
+        // 2. Знаходимо елементи інтерфейсу за їхніми ID з XML файлу
+        val resultTextView: TextView = findViewById(R.id.resultTextView)
+        val inputEditText = findViewById<EditText>(R.id.inputEditText)
+        val actionButton = findViewById<Button>(R.id.actionButton)
 
+        actionButton.setOnClickListener {
 
-            Log.d(TAG, "ClickListener: Була натиснута кнопка Press Me")
-            Log.i(TAG, "ClickListener: Була натиснута кнопка Press Me")
-            Log.w(TAG, "ClickListener: Була натиснута кнопка Press Me")
+            // Отримуємо текст, який ввів користувач в EditText
+            val inputText = inputEditText.text
 
-            try {
-                val c = 1/0
-            } catch (e: Exception) {
-                // Handle the exception here, e.g., log it
-                Log.e(TAG, "Error dividing by zero")
+            // Перевіряємо, чи введений текст не порожній
+            if (inputText.isNotBlank()) {
+                // Змінюємо властивість .text у TextView
+                resultTextView.text = "Привіт, $inputText!"
 
+                // (Опційно) Очистити поле після натискання
+                // inputEditText.text.clear()
+            } else {
+                resultTextView.text = "Будь ласка, введіть ім'я."
             }
 
         }
