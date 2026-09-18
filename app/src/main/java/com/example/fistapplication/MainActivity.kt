@@ -3,36 +3,27 @@ package com.example.fistapplication
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fistapplication.databinding.ActivityFirstBinding
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    private val TAG = "XXXX"
 
-    private lateinit var resultTextView: TextView
-    private lateinit var inputEditText: EditText
-
+    private lateinit var binding: ActivityFirstBinding
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
+        // 2. Ініціалізуємо binding, "надуваючи" (inflating) XML-розмітку
+        binding = ActivityFirstBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // 2. Знаходимо елементи інтерфейсу за їхніми ID з XML файлу
-        resultTextView = findViewById(R.id.resultTextView)
-        inputEditText = findViewById(R.id.inputEditText)
-
-        val actionButton = findViewById<Button>(R.id.actionButton)
-
-        actionButton.setOnClickListener(this)
+        binding.actionButton.setOnClickListener(this)
 
     }
 
-    override fun onClick(view: View?) {
+    override fun onClick(view: View?) = with(binding){
         // Отримуємо текст, який ввів користувач в EditText
         val inputText = inputEditText.text
 
