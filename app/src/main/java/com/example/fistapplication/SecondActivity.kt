@@ -3,8 +3,10 @@ package com.example.fistapplication
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fistapplication.databinding.ActivitySecondBinding
+
 
 class SecondActivity : AppCompatActivity() {
 
@@ -35,5 +37,40 @@ class SecondActivity : AppCompatActivity() {
             // Використовуємо createChooser, щоб користувач міг обрати програму, якщо їх декілька
             startActivity(Intent.createChooser(emailIntent, "Оберіть поштовий клієнт"))
         }
+
+        val app = application
+
+        Log.d("XXX", "SecondActivity: onCreate: ")
     }
+
+    override fun onStart() {
+        super.onStart()
+
+        Log.d("XXX", "SecondActivity: onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        Log.d("XXX", "SecondActivity: onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        Log.d("XXX", "SecondActivity: onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        Log.d("XXX", "SecondActivity: onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        Log.d("XXX", "SecondActivity: onDestroy")
+    }
+
 }
