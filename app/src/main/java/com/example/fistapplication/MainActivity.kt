@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         lifecycle.addObserver(LifecycleObserverImp())
         lifecycle.addObserver(LocationTracker())
+        lifecycle.addObserver(LifecycleEventObserverImp())
 
         Log.d("XXX", "MainActivity: onCreate: ")
     }
